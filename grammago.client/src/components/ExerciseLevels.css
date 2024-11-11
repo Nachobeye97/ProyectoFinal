@@ -1,0 +1,33 @@
+.exercise-links .exercise-button {
+    margin-right: 10px;
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .exercise-links .exercise-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  .exercise-links .exercise-button:focus {
+    outline: none;
+  }
+  
+  .exercise-links .exercise-button:active {
+    background-color: #004080;
+    transform: scale(0.98);
+  }
+  
+  .main-page-container.dark .exercise-links .exercise-button {
+    background-color: #0056b3;
+    color: white;
+  }
+  

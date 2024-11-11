@@ -1,0 +1,25 @@
+.exercise-item {
+    margin-bottom: 20px;
+}
+
+.options-list {
+    list-style-type: none; /* Eliminar los puntos de la lista */
+    padding: 0; /* Eliminar el padding por defecto */
+}
+
+.options-list li {
+    margin: 10px 0; /* Espaciado entre las opciones */
+    display: flex; /* Usar flex para alinear el radio button y el texto */
+    align-items: center; /* Centrar verticalmente */
+}
+
+.options-list li.selected {
+    background-color: rgba(0, 123, 255, 0.3); /* Color de fondo más transparente para la opción seleccionada */
+    padding: 5px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+.option-label {
+    margin-left: 10px; /* Espaciado a la izquierda del texto */
+    cursor: pointer; /* Cambiar el cursor al pasar por encima */
+}

@@ -1,0 +1,23 @@
+﻿:root {
+  --bg-color-light: #f4f4f4;
+  --bg-color-dark: #242424;
+  --text-color-light: #213547;
+  --text-color-dark: rgba(255, 255, 255, 0.87);
+}
+
+body[data-theme='light'] {
+  background-color: var(--bg-color-light);
+  color: var(--text-color-light);
+}
+
+body[data-theme='dark'] {
+  background-color: var(--bg-color-dark);
+  color: var(--text-color-dark);
+}
+
+button {
+  border-radius: 5px;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}

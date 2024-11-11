@@ -1,0 +1,114 @@
+.exercises-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+    font-family: 'Arial', sans-serif;
+    color: var(--text-color-light);
+    background-color: var(--bg-color-light);
+    transition: background-color var(--transition-duration) ease, color var(--transition-duration) ease;
+}
+
+/* Estilo para el título */
+.exercises-container h2 {
+    margin-top: -10px; /* Ajusta este valor según sea necesario para subir el título */
+    margin-bottom: 20px; /* Espaciado inferior para separar del siguiente elemento */
+    text-align: center; /* Centra el texto si es necesario */
+    color: #007bff; /* Color de fondo */
+}
+
+.back-button {
+    position: fixed; /* Mantiene el botón en su posición al hacer scroll */
+    top: 40px; /* Ajusta la posición vertical */
+    left: 20px; /* Ajusta la posición horizontal */
+    background-color: #007bff; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px 15px; /* Espaciado interno */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón */
+    transition: background-color 0.3s; /* Transición suave al pasar el ratón */
+    z-index: 1000; /* Asegúrate de que el botón esté por encima del contenido */
+    width: 70px; /* Ancho del botón */
+    height: 50px;
+}
+
+.back-button:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el ratón */
+}
+
+/* Agregar aquí estilos para modo oscuro */
+.exercises-container.dark {
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
+}
+
+/* Estilos para los botones de ejercicio */
+.button-container,
+.check-answers-container {
+    display: flex;
+    justify-content: center; /* Centra los botones horizontalmente */
+    margin-top: 20px; /* Espaciado superior */
+    
+}
+
+.exercise-button {
+    background-color: #007BFF; /* Color de fondo */
+    color: white; /* Color del texto */
+    padding: 12px 24px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transición suave */
+    font-size: 16px; /* Tamaño de fuente */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para profundidad */
+    margin-left: 25px;
+}
+
+.exercise-button:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el ratón */
+    transform: translateY(-2px); /* Levanta el botón un poco al pasar el ratón */
+}
+
+.exercise-button:active {
+    transform: translateY(1px); /* Baja el botón al hacer clic */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduce la sombra al hacer clic */
+}
+
+
+/* Estilos para la tabla de resultados de ejercicios */
+.exercise-results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.exercise-results-table th,
+.exercise-results-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.exercise-results-table th {
+    background-color: #f2f2f2;
+}
+
+.correct {
+    color: green;
+    font-weight: bold; /* Para poner el texto en negrita */
+}
+
+.incorrect {
+    color: red;
+    font-weight: bold; /* Para poner el texto en negrita */
+}
+.check-answers-container {
+    display: flex;
+    justify-content: center; /* Centra el botón horizontalmente */
+    margin-top: 20px; /* Espaciado superior */
+}
+
+.check-answers-container .exercise-button {
+    margin-left: -2px; /* Ajusta este valor según sea necesario para mover el botón */
+}

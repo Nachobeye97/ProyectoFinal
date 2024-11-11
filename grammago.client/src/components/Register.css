@@ -1,0 +1,90 @@
+:root {
+  --bg-color-light: white;
+  --text-color-light: #333;
+  --bg-color-dark: #2b2b2b;
+  --text-color-dark: #f4f4f4;
+  --btn-bg-color-light: #007bff;
+  --btn-bg-color-dark: #0056b3;
+}
+
+.register-container {
+  background-color: var(--bg-color-light);
+  color: var(--text-color-light);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  margin: 0 auto;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.register-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.register-container input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.register-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--btn-bg-color-light); 
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.register-container p {
+  text-align: center;
+  color: #666;
+}
+
+.register-container .login-link {
+  color: var(--btn-bg-color-light);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.register-container .login-link:hover {
+  color: var(--btn-bg-color-dark);
+}
+
+
+.register-container.dark {
+  background-color: var(--bg-color-dark);
+  color: var(--text-color-dark);
+}
+
+.register-container.dark input {
+  background-color: #444;
+  color: var(--text-color-dark);
+  border: 1px solid #555;
+}
+
+.register-container.dark button {
+  background-color: var(--btn-bg-color-dark);
+}
+
+.error {
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .register-container {
+    width: 90%;
+  }
+}

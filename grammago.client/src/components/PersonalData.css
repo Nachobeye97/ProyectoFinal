@@ -1,0 +1,141 @@
+:root {
+    --bg-color-light: #f4f4f4;
+    --text-color-light: #333;
+    --bg-color-dark: #2b2b2b;
+    --text-color-dark: #f4f4f4;
+    --input-bg-light: #ffffff;
+    --input-bg-dark: #444;
+    --input-border-light: #ddd;
+    --input-border-dark: #555;
+    --btn-bg-color-light: #007bff;
+    --btn-bg-color-dark: #0056b3;
+    --transition-duration: 0.3s;
+}
+
+.personal-data-container {
+    max-width: 900px;
+    margin: 10px auto;
+    padding: 30px;
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    transition: background-color var(--transition-duration) ease, color var(--transition-duration) ease;
+    position: relative;
+}
+
+.personal-data-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    transition: color var(--transition-duration) ease;
+}
+
+.personal-data-container label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    transition: color var(--transition-duration) ease;
+}
+
+.personal-data-container input {
+    width: 90%;
+    padding: 12px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border: 1px solid var(--input-border-light);
+    background-color: var(--input-bg-light);
+    color: var(--text-color-light);
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color var(--transition-duration) ease, color var(--transition-duration) ease, border-color var(--transition-duration) ease;
+}
+
+.personal-data-container input:focus {
+    border-color: var(--btn-bg-color-light);
+    outline: none;
+}
+
+.personal-data-container button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: var(--btn-bg-color-light);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color var(--transition-duration) ease;
+}
+
+.personal-data-container button:hover {
+    background-color: var(--btn-bg-color-dark);
+}
+
+.personal-data-container.dark {
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
+}
+
+.personal-data-container.dark h2,
+.personal-data-container.dark label {
+    color: var(--text-color-dark);
+}
+
+.personal-data-container.dark input {
+    background-color: var(--input-bg-dark);
+    color: var(--text-color-dark);
+    border: 1px solid var(--input-border-dark);
+}
+
+.personal-data-container.dark button {
+    background-color: var(--btn-bg-color-dark);
+}
+
+/* Contenedor del botón */
+.button-container {
+    position: fixed; /* Mantiene el botón en la pantalla */
+    bottom: 20px; /* Ajusta la posición desde la parte inferior */
+    right: 20px; /* Ajusta la posición desde la derecha */
+    z-index: 1000; /* Asegura que el botón esté por encima del contenido */
+}
+
+.back-button {
+    background-color: #007bff; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 14px; /* Tamaño de fuente pequeño */
+    padding: 5px 10px; /* Espaciado interno pequeño */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón */
+    transition: background-color 0.3s; /* Transición suave al pasar el ratón */
+    width: 50px; /* Ancho del botón pequeño */
+    height: 30px; /* Altura del botón pequeña */
+}
+
+.back-button:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el ratón */
+}
+
+.back-button:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el ratón */
+}
+
+
+
+
+@media (max-width: 768px) {
+    .personal-data-container {
+        padding: 15px; /* Ajuste del padding */
+        max-width: 100%; /* Ancho máximo en pantallas pequeñas */
+    }
+
+    .personal-data-container input {
+        padding: 10px; /* Ajuste del padding del input */
+    }
+
+    .personal-data-container button {
+        padding: 12px; /* Ajuste del padding del botón */
+    }
+}

@@ -1,0 +1,136 @@
+.main-page-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  font-family: 'Arial', sans-serif;
+  color: var(--text-color-light);
+  background-color: var(--bg-color-light);
+  transition: background-color var(--transition-duration) ease, color var(--transition-duration) ease;
+}
+
+.main-page-container.dark {
+  background-color: var(--bg-color-dark);
+  color: var(--text-color-dark);
+}
+
+.main-page-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.exercise-links {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.exercise-button {
+  margin-right: 50px;
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 200px;
+  
+}
+
+.exercise-button:hover {
+  background-color: #0056b3;
+}
+
+.circular-button-container {
+  position: fixed;
+  top: 10%;
+  left: 10px;
+  transform: translateY(-50%);
+}
+
+.circular-button {
+  width: 50px;
+  height: 50px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circular-button:hover {
+  background-color: #0056b3;
+}
+
+.menu {
+  position: absolute; /* Posiciona el menú de forma absoluta */
+  top: 60px; /* Coloca el menú debajo del botón */
+  left: 0; /* Alinear a la izquierda */
+  background-color: white; /* Color de fondo del menú */
+  border: 1px solid #ccc; /* Bordes para el menú */
+  border-radius: 5px; /* Bordes redondeados */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+  z-index: 100; /* Asegura que el menú esté por encima de otros elementos */
+  display: flex;
+  flex-direction: column; /* Alinear los elementos en columna */
+  max-width: 400px; /* Cambia el ancho máximo del menú */
+  padding: 15px; /* Añade espaciado interno */
+  gap: 10px; /* Espacio entre los elementos del menú */
+  overflow-y: auto; /* Permite el desplazamiento si el contenido excede la altura */
+  max-height: 500px; /* Establece una altura máxima para el menú */
+}
+
+.menu.dark {
+  background-color: #2b2b2b; /* Color de fondo del menú en modo oscuro */
+  color: var(--text-color-dark); /* Color del texto en modo oscuro */
+}
+
+.menu-item {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.menu-item:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos para la tabla de resultados de ejercicios */
+.exercise-results-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.exercise-results-table th,
+.exercise-results-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.exercise-results-table th {
+  background-color: #f2f2f2;
+}
+
+/* Nueva regla para el modo oscuro */
+.main-page-container.dark .exercise-results-table th {
+  color: black; /* Cambia el color de los títulos a negro en modo oscuro */
+}
+
+.correct {
+  color: green;
+  font-weight: bold; /* Para poner el texto en negrita */
+}
+
+.incorrect {
+  color: red;
+  font-weight: bold; /* Para poner el texto en negrita */
+}
