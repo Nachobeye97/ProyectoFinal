@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './register.css';
+import './Register.css';
 
 const Register = ({ darkMode }) => {
   const [name, setName] = useState('');

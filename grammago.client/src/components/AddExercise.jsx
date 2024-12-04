@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import './AddExercise.css';
 
 const AddExercise = ({ onAddExercise }) => {
     const [question, setQuestion] = useState('');
     const [options, setOptions] = useState(['', '', '']);
     const [answer, setAnswer] = useState('');
-    const [level, setLevel] = useState(1); // Nivel por defecto: 1 (Básico)
+    const [level, setLevel] = useState(1);
     const [error, setError] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [darkMode, setDarkMode] = useState(false);
+
+    useEffect(() => {
+        const savedMode = localStorage.getItem('darkMode') === 'true';
+        setDarkMode(savedMode);
+    }, []);
 
     const handleOptionChange = (index, value) => {
         const newOptions = [...options];
@@ -17,7 +24,6 @@ const AddExercise = ({ onAddExercise }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Validación de opciones y respuesta correcta
         if (options.some(option => option.trim() === '') || !options.includes(answer)) {
             setError("Las opciones no pueden estar vacías y la respuesta debe estar en las opciones.");
             return;
@@ -27,7 +33,7 @@ const AddExercise = ({ onAddExercise }) => {
             question, 
             options, 
             answer, 
-            level // `level` ya es un número entero
+            level 
         };
 
         setIsSubmitting(true);
@@ -51,11 +57,10 @@ const AddExercise = ({ onAddExercise }) => {
             if (response.ok) {
                 alert("Ejercicio añadido con éxito");
                 onAddExercise(newExercise);
-                // Limpiar el formulario
                 setQuestion('');
                 setOptions(['', '', '']);
                 setAnswer('');
-                setLevel(1); // Resetear al nivel básico por defecto
+                setLevel(1);
                 setError('');
             } else {
                 const errorMessage = await response.text();
@@ -70,45 +75,51 @@ const AddExercise = ({ onAddExercise }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <p>Añadir Ejercicio</p>
-            <input
-                type="text"
-                value={question}
-                onChange={(e) => setQuestion(e.target.value)}
-                placeholder="Enunciado"
-                required
-            />
-            {options.map((option, index) => (
-                <div key={index}>
+        <div className={`add-exercise-container ${darkMode ? 'dark-mode' : ''}`}>
+            <h3>Añadir Ejercicio</h3>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    Enunciado:
                     <input
                         type="text"
-                        value={option}
-                        onChange={(e) => handleOptionChange(index, e.target.value)}
-                        placeholder={`Opción ${index + 1}`}
+                        value={question}
+                        onChange={(e) => setQuestion(e.target.value)}
+                        placeholder="Escribe el enunciado"
                         required
                     />
-                    <label>
+                </label>
+                {options.map((option, index) => (
+                    <label key={index}>
+                        Opción {index + 1}:
                         <input
-                            type="radio"
+                            type="text"
                             value={option}
-                            checked={answer === option}
-                            onChange={() => setAnswer(option)}
+                            onChange={(e) => handleOptionChange(index, e.target.value)}
+                            placeholder={`Escribe la opción ${index + 1}`}
+                            required
                         />
-                        Correcta
+                        <label className="correct-option">
+                            <input
+                                type="radio"
+                                value={option}
+                                checked={answer === option}
+                                onChange={() => setAnswer(option)}
+                            />
+                            Correcta
+                        </label>
                     </label>
-                </div>
-            ))}
-            <label>
-                Nivel:
-                <select value={level} onChange={(e) => setLevel(parseInt(e.target.value, 10))}>
-                    <option value={1}>Nivel Básico</option>
-                    <option value={2}>Nivel Avanzado</option>
-                </select>
-            </label>
-            <button type="submit" disabled={isSubmitting}>Añadir Ejercicio</button>
-            {error && <p className="error">{error}</p>}
-        </form>
+                ))}
+                <label>
+                    Nivel:
+                    <select value={level} onChange={(e) => setLevel(parseInt(e.target.value, 10))}>
+                        <option value={1}>Nivel Básico</option>
+                        <option value={2}>Nivel Avanzado</option>
+                    </select>
+                </label>
+                <button type="submit" disabled={isSubmitting}>Añadir Ejercicio</button>
+                {error && <p className="error">{error}</p>}
+            </form>
+        </div>
     );
 };
 

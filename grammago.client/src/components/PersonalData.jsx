@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './PersonalData.css';
 import { useNavigate } from 'react-router-dom';
-import PaypalButton from './PaypalButton'; // Asegúrate de importar el componente de PayPal
 
 const PersonalData = ({ darkMode }) => {
   const [formData, setFormData] = useState({

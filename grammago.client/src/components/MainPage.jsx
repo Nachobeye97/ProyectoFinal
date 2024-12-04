@@ -10,6 +10,9 @@ const MainPage = ({ darkMode }) => {
     const [exerciseResults, setExerciseResults] = useState([]);
     const navigate = useNavigate();
 
+    // Obtener el rol del usuario desde localStorage
+    const userRole = localStorage.getItem('userRole'); 
+
     useEffect(() => {
         const fetchExerciseResults = async () => {
             try {
@@ -22,7 +25,7 @@ const MainPage = ({ darkMode }) => {
 
                 if (response.ok) {
                     const data = await response.json();
-                    console.log('Datos de resultados:', data);  // Verificar los datos que se están recibiendo
+                    console.log('Datos de resultados:', data); 
                     setExerciseResults(data); 
                 } else {
                     console.error("Error al cargar los resultados:", response.status, response.statusText);
@@ -46,7 +49,7 @@ const MainPage = ({ darkMode }) => {
     };
 
     const handleLogout = () => {
-        localStorage.removeItem('token'); 
+        localStorage.clear(); // Eliminar toda la información del usuario
         navigate('/login');
     };
 
@@ -58,7 +61,7 @@ const MainPage = ({ darkMode }) => {
             </header>
 
             <section className="exercise-links">
-                <p>Ejercicios de Inglés</p>
+                <p></p>
                 <ExerciseLevels /> 
             </section>
 
@@ -96,8 +99,10 @@ const MainPage = ({ darkMode }) => {
                         </tbody>
                     </table>
                 ) : (
-                    <p>No hay resultados disponibles.</p>
-                )}
+                    <p className="main-page-message">
+                    Realiza tus ejercicios y aquí podrás ver el historial de tus resultados
+                  </p>
+                                  )}
             </section>
 
             <div className="circular-button-container">
@@ -107,6 +112,14 @@ const MainPage = ({ darkMode }) => {
                         <button className="menu-item" onClick={goToPersonalData}>
                             Datos personales
                         </button>
+
+                        {/* Mostrar el botón "Usuarios" solo si el usuario es admin */}
+                        {userRole === "admin" && (
+                            <button className="menu-item" onClick={() => navigate("/usuarios")}>
+                                Usuarios
+                            </button>
+                        )}
+
                         <PaypalButton /> 
                         <button className="menu-item" onClick={handleLogout}>
                             Logout

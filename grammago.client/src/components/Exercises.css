@@ -1,114 +1,237 @@
-.exercises-container {
+:root {
+    --bg-color-light: white;
+    --text-color-light: #333;
+    --bg-color-dark: #2b2b2b;
+    --text-color-dark: #f4f4f4;
+    --btn-bg-color-light: #007bff;
+    --btn-bg-color-dark: #0056b3;
+    --transition-duration: 0.3s;
+  }
+  
+  .exercises-container {
     padding: 20px;
     max-width: 800px;
     margin: auto;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: var(--text-color-light);
     background-color: var(--bg-color-light);
     transition: background-color var(--transition-duration) ease, color var(--transition-duration) ease;
-}
-
-/* Estilo para el título */
-.exercises-container h2 {
-    margin-top: -10px; /* Ajusta este valor según sea necesario para subir el título */
-    margin-bottom: 20px; /* Espaciado inferior para separar del siguiente elemento */
-    text-align: center; /* Centra el texto si es necesario */
-    color: #007bff; /* Color de fondo */
-}
-
-.back-button {
-    position: fixed; /* Mantiene el botón en su posición al hacer scroll */
-    top: 40px; /* Ajusta la posición vertical */
-    left: 20px; /* Ajusta la posición horizontal */
-    background-color: #007bff; /* Color de fondo */
-    color: white; /* Color del texto */
-    border: none; /* Sin borde */
-    border-radius: 5px; /* Bordes redondeados */
-    font-size: 16px; /* Tamaño de fuente */
-    padding: 10px 15px; /* Espaciado interno */
-    cursor: pointer; /* Cambia el cursor al pasar el ratón */
-    transition: background-color 0.3s; /* Transición suave al pasar el ratón */
-    z-index: 1000; /* Asegúrate de que el botón esté por encima del contenido */
-    width: 70px; /* Ancho del botón */
-    height: 50px;
-}
-
-.back-button:hover {
-    background-color: #0056b3; /* Color de fondo al pasar el ratón */
-}
-
-/* Agregar aquí estilos para modo oscuro */
-.exercises-container.dark {
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .exercises-container.dark {
     background-color: var(--bg-color-dark);
     color: var(--text-color-dark);
-}
-
-/* Estilos para los botones de ejercicio */
-.button-container,
-.check-answers-container {
+  }
+  
+  .main-page-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .main-page-header h2 {
+    font-size: 2rem;
+    color: #007bff;
+    font-weight: bold;
+  }
+  
+  .exercise-selector-container {
     display: flex;
-    justify-content: center; /* Centra los botones horizontalmente */
-    margin-top: 20px; /* Espaciado superior */
-    
-}
-
-.exercise-button {
-    background-color: #007BFF; /* Color de fondo */
-    color: white; /* Color del texto */
-    padding: 12px 24px; /* Espaciado interno */
-    border: none; /* Sin borde */
-    border-radius: 5px; /* Bordes redondeados */
-    cursor: pointer; /* Cambia el cursor al pasar el ratón */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Transición suave */
-    font-size: 16px; /* Tamaño de fuente */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para profundidad */
-    margin-left: 25px;
-}
-
-.exercise-button:hover {
-    background-color: #0056b3; /* Color de fondo al pasar el ratón */
-    transform: translateY(-2px); /* Levanta el botón un poco al pasar el ratón */
-}
-
-.exercise-button:active {
-    transform: translateY(1px); /* Baja el botón al hacer clic */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduce la sombra al hacer clic */
-}
-
-
-/* Estilos para la tabla de resultados de ejercicios */
-.exercise-results-table {
+    justify-content: flex-start; 
+    gap: 20px; 
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 100%; 
+    justify-content: space-evenly; 
+  }
+  
+  .exercise-selector-button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .exercise-selector-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+  }
+  
+  .exercise-selector-button.selected {
+    background-color: #0056b3;
+    color: white;
+    font-weight: bold;
+    border: 2px solid white;
+  }
+  
+  .exercise-selector-button.answered {
+    background-color: orange;
+    color: white;
+    border: 2px solid white;
+  }
+  
+  .exercise-selector-button.answered:hover {
+    background-color: darkorange;
+  }
+  
+  .exercise-button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    margin-left: 15px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .exercise-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+  }
+  
+  .exercise-button:active {
+    transform: translateY(1px);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .exercise-results-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-}
-
-.exercise-results-table th,
-.exercise-results-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
+  }
+  
+  .exercise-results-table th {
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
     text-align: left;
-}
-
-.exercise-results-table th {
-    background-color: #f2f2f2;
-}
-
-.correct {
+  }
+  
+  .exercise-results-table td {
+    background-color: #f9f9f9;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .correct {
     color: green;
-    font-weight: bold; /* Para poner el texto en negrita */
-}
-
-.incorrect {
+    font-weight: bold;
+  }
+  
+  .incorrect {
     color: red;
-    font-weight: bold; /* Para poner el texto en negrita */
-}
-.check-answers-container {
+    font-weight: bold;
+  }
+  
+  .check-answers-container {
     display: flex;
-    justify-content: center; /* Centra el botón horizontalmente */
-    margin-top: 20px; /* Espaciado superior */
-}
-
-.check-answers-container .exercise-button {
-    margin-left: -2px; /* Ajusta este valor según sea necesario para mover el botón */
-}
+    justify-content: center;
+    margin-top: 30px;
+  }
+  
+  .exercise-selector-container.dark {
+    background-color: #333;
+    border: 2px solid #555;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+  }
+  
+  .exercise-selector-button.dark {
+    background-color: #555;
+    color: #ddd;
+  }
+  
+  .exercise-selector-button.dark:hover {
+    background-color: #777;
+  }
+  
+  .exercise-selector-button.selected.dark {
+    background-color: #007bff;
+    color: white;
+    border: 2px solid white;
+  }
+  
+  .exercise-selector-button.answered.dark {
+    background-color: orange;
+    color: #333;
+  }
+  
+  h4 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 20px;
+  }
+  
+  .exercise-option.selected {
+    background-color: orange;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .check-answers-container button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .check-answers-container button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+  }
+  
+  .check-answers-container button:active {
+    transform: translateY(1px);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  
+  .back-button {
+    position: fixed;
+    top: 40px;
+    left: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    z-index: 1000;
+  }
+  
+  .back-button:hover {
+    background-color: #0056b3;
+  }
+  
+  
+  @media (max-width: 768px) {
+    .exercise-selector-container {
+        flex-wrap: wrap; 
+        justify-content: center;
+      }
+  
+      .exercise-selector-button {
+        margin: 5px; 
+      }
+    
+  
+    .exercise-button {
+      padding: 12px 20px;
+    }
+  }
+  

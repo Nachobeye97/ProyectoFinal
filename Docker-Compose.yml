@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  backend:
+    build: ./GrammaGo.Server
+    container_name: grammago_backend
+    ports:
+      - "5245:5245"
+    environment:
+      - ASPNETCORE_URLS=http://*:5245
+      - ConnectionStrings__DefaultConnection=Server=sqlserver.c3uc8gyseap6.eu-west-1.rds.amazonaws.com,1433;Database=recipiente;User ID=admin;Password=Nachodam12;TrustServerCertificate=True;
+    networks:
+      - red-grammago
+    volumes:
+      - ./keys:/root/.aspnet/DataProtection-Keys
+
+  frontend:
+    build: ./grammago.client
+    container_name: grammago_frontend
+    ports:
+      - "80:80"
+    networks:
+      - red-grammago
+    environment:
+      - REACT_APP_API_URL=http://backend:5245/api
+
+networks:
+  red-grammago:
+    driver: bridge

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './login.css';
+import './Login.css';
 
 const Login = ({ darkMode }) => {
   const [email, setEmail] = useState('');
@@ -11,11 +11,10 @@ const Login = ({ darkMode }) => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setLoading(true); // Iniciar la carga
-    setError(''); // Reiniciar el error
+    setLoading(true); 
+    setError(''); 
 
     try {
-      // Solicitud de inicio de sesión
       const response = await fetch('/api/user/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -30,16 +29,16 @@ const Login = ({ darkMode }) => {
         localStorage.setItem('userId', data.userId); // Almacenar el ID del usuario
         localStorage.setItem('userRole', data.role); // Almacenar el rol
         
-        // Redireccionar a la página principal o a otra página después de iniciar sesión
-        navigate('/main'); // Navegar a la página principal
+        
+        navigate('/main'); 
       } else {
         const errorMessage = await response.text();
-        setError(errorMessage || 'Error en el inicio de sesión.'); // Establecer mensaje de error
+        setError(errorMessage || 'Error en el inicio de sesión.'); 
       }
     } catch (error) {
-      setError("Hubo un error al intentar iniciar sesión."); // Manejar errores de conexión
+      setError("Hubo un error al intentar iniciar sesión."); 
     } finally {
-      setLoading(false); // Finalizar la carga
+      setLoading(false); 
     }
   };
 
@@ -69,11 +68,6 @@ const Login = ({ darkMode }) => {
         {error && <p className="error">{error}</p>}
       </form>
 
-      <p>
-        <span onClick={() => navigate('/forgot-password')} className="forgot-password-link">
-          ¿Olvidaste tu contraseña?
-        </span>
-      </p>
 
       <p>
         ¿No tienes cuenta?{' '}

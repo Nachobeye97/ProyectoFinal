@@ -11,17 +11,18 @@ const Exercises = ({ setExerciseResults, darkMode }) => {
     const [showResults, setShowResults] = useState(false);
     const [correctCount, setCorrectCount] = useState(0);
     const [isAdmin, setIsAdmin] = useState(false);
+    const [answeredQuestions, setAnsweredQuestions] = useState(new Set());
     const navigate = useNavigate();
     const location = useLocation();
-    const [page, setPage] = useState(1);  // Para manejar la paginación
-    const [pageSize] = useState(10);  // Tamaño de página fijo a 10
+    const [page, setPage] = useState(1);
+    const [pageSize] = useState(10);
 
     useEffect(() => {
         const fetchExercises = async () => {
-            const level = new URLSearchParams(location.search).get('level');  // Obtiene el nivel de los parámetros de la URL
+            const level = new URLSearchParams(location.search).get('level');
             const response = await fetch(`/api/user/exercises?page=${page}&pageSize=${pageSize}&level=${level}`);
             const data = await response.json();
-            setExercises(data);  // Establece los ejercicios en el estado
+            setExercises(data);
         };
 
         fetchExercises();
@@ -30,13 +31,16 @@ const Exercises = ({ setExerciseResults, darkMode }) => {
         if (userRole === 'admin') {
             setIsAdmin(true);
         }
-    }, [location.search, page]);  // Dependencia en location.search y page para hacer la solicitud cuando el nivel o la página cambien
+    }, [location.search, page]);
 
     const handleOptionChange = (exerciseId, option) => {
         setSelectedOptions({
             ...selectedOptions,
             [exerciseId]: option,
         });
+
+        
+        setAnsweredQuestions((prev) => new Set(prev).add(exerciseId));
     };
 
     const handleCheckAnswers = async () => {
@@ -57,11 +61,11 @@ const Exercises = ({ setExerciseResults, darkMode }) => {
             CorrectCount: correct,
             IncorrectCount: incorrect,
             DateCompleted: new Date().toISOString(),
-            Level: exercises[currentExerciseIndex]?.level.toString() || 'No especificado', // Asegúrate de que sea una cadena
+            Level: exercises[currentExerciseIndex]?.level.toString() || 'No especificado',
         };
 
         await saveExerciseResult(result);
-        await fetchExerciseResults();  // Recargar los resultados después de guardar
+        await fetchExerciseResults();
     };
 
     const saveExerciseResult = async (result) => {
@@ -94,7 +98,7 @@ const Exercises = ({ setExerciseResults, darkMode }) => {
         });
         if (response.ok) {
             const data = await response.json();
-            setExerciseResults(data); // Actualiza los resultados en el estado
+            setExerciseResults(data);
         } else {
             console.error("Error al cargar los resultados:", response.status, response.statusText);
         }
@@ -120,7 +124,7 @@ const Exercises = ({ setExerciseResults, darkMode }) => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 },
                 body: JSON.stringify(newExercise),
             });
@@ -146,13 +150,32 @@ const Exercises = ({ setExerciseResults, darkMode }) => {
             <h2 className="main-page-header">Ejercicios de inglés</h2>
             {isAdmin && <AddExercise onAddExercise={handleAddExercise} />}
 
+            <div className={`exercise-selector-container ${darkMode ? 'dark' : ''}`}>
+    <div className="exercise-selector">
+        {exercises.map((exercise, index) => (
+            <button
+                key={index}
+                className={`exercise-selector-button ${darkMode ? 'dark' : ''} ${
+                    currentExerciseIndex === index ? 'selected' : ''
+                } ${answeredQuestions.has(exercise.id) ? 'answered' : ''}`}
+                onClick={() => setCurrentExerciseIndex(index)}
+            >
+                {index + 1}
+            </button>
+        ))}
+    </div>
+</div>
+
             {exercises.length > 0 && (
-                <ExerciseItem
-                    exercise={exercises[currentExerciseIndex]}
-                    onOptionChange={handleOptionChange}
-                    selectedOption={selectedOptions[exercises[currentExerciseIndex].id]}
-                    darkMode={darkMode}
-                />
+                <>
+                    <h4>Ejercicio {currentExerciseIndex + 1}</h4>
+                    <ExerciseItem
+                        exercise={exercises[currentExerciseIndex]}
+                        onOptionChange={handleOptionChange}
+                        selectedOption={selectedOptions[exercises[currentExerciseIndex].id]}
+                        darkMode={darkMode}
+                    />
+                </>
             )}
 
             <div>
@@ -168,7 +191,9 @@ const Exercises = ({ setExerciseResults, darkMode }) => {
             </div>
 
             <div className="check-answers-container">
-                <button className="exercise-button" onClick={handleCheckAnswers}>Comprobar respuestas</button>
+                <button className="exercise-button" onClick={handleCheckAnswers}>
+                    Comprobar respuestas
+                </button>
             </div>
 
             {showResults && (

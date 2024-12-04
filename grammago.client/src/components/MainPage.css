@@ -2,10 +2,12 @@
   padding: 20px;
   max-width: 800px;
   margin: auto;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Poppins', sans-serif; 
   color: var(--text-color-light);
   background-color: var(--bg-color-light);
   transition: background-color var(--transition-duration) ease, color var(--transition-duration) ease;
+  border-radius: 12px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .main-page-container.dark {
@@ -13,124 +15,191 @@
   color: var(--text-color-dark);
 }
 
+
 .main-page-header {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
+.main-page-header h1 {
+  font-size: 3rem; 
+  color: #007bff;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); 
+  margin-bottom: 10px;
+}
+
+.main-page-header h2 {
+  font-size: 1.5rem; 
+  color: #555; 
+  font-weight: 400; 
+  margin-top: 10px;
+}
+
+
 .exercise-links {
-  margin-top: 20px;
+  margin-top: 30px;
   text-align: center;
 }
 
 .exercise-button {
-  margin-right: 50px;
-  background-color: #007BFF;
+  margin-right: 15px;
+  background-color: #ff5722; 
   color: white;
-  padding: 10px 20px;
+  padding: 12px 25px;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  width: 200px;
-  
+  font-size: 1rem;
+  font-weight: 600; 
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
 }
 
 .exercise-button:hover {
-  background-color: #0056b3;
+  background-color: #e64a19; 
+  transform: translateY(-3px);
 }
+
+
+.main-page-message {
+  font-size: 1.5rem; 
+  text-align: center; 
+  color: #ffffff; 
+  background: linear-gradient(135deg, #007bff, #00c6ff); 
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+  margin: 30px auto;
+  max-width: 700px;
+  line-height: 1.8;
+  font-weight: bold; 
+}
+
+.main-page-container.dark .main-page-message {
+  background: linear-gradient(135deg, #0056b3, #004080); 
+  color: #e6f7ff;
+}
+
 
 .circular-button-container {
   position: fixed;
-  top: 10%;
-  left: 10px;
+  top: 20%;
+  left: 20px;
   transform: translateY(-50%);
 }
 
+
 .circular-button {
-  width: 50px;
-  height: 50px;
-  background-color: #007bff;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #007bff, #004080);
   color: white;
   border: none;
   border-radius: 50%;
-  font-size: 22px;
+  font-size: 24px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); 
+  transition: all 0.3s ease-in-out;
 }
 
 .circular-button:hover {
-  background-color: #0056b3;
+  background-color: #e0a800; 
+  transform: scale(1.1); 
 }
 
-.menu {
-  position: absolute; /* Posiciona el menú de forma absoluta */
-  top: 60px; /* Coloca el menú debajo del botón */
-  left: 0; /* Alinear a la izquierda */
-  background-color: white; /* Color de fondo del menú */
-  border: 1px solid #ccc; /* Bordes para el menú */
-  border-radius: 5px; /* Bordes redondeados */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
-  z-index: 100; /* Asegura que el menú esté por encima de otros elementos */
-  display: flex;
-  flex-direction: column; /* Alinear los elementos en columna */
-  max-width: 400px; /* Cambia el ancho máximo del menú */
-  padding: 15px; /* Añade espaciado interno */
-  gap: 10px; /* Espacio entre los elementos del menú */
-  overflow-y: auto; /* Permite el desplazamiento si el contenido excede la altura */
-  max-height: 500px; /* Establece una altura máxima para el menú */
-}
 
-.menu.dark {
-  background-color: #2b2b2b; /* Color de fondo del menú en modo oscuro */
-  color: var(--text-color-dark); /* Color del texto en modo oscuro */
-}
-
-.menu-item {
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  text-align: left;
-}
-
-.menu-item:hover {
-  background-color: #0056b3;
-}
-
-/* Estilos para la tabla de resultados de ejercicios */
 .exercise-results-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
-}
-
-.exercise-results-table th,
-.exercise-results-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .exercise-results-table th {
-  background-color: #f2f2f2;
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  padding: 10px;
 }
 
-/* Nueva regla para el modo oscuro */
+.exercise-results-table td {
+  background-color: #f9f9f9;
+  padding: 12px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
 .main-page-container.dark .exercise-results-table th {
-  color: black; /* Cambia el color de los títulos a negro en modo oscuro */
+  background-color: #0056b3;
 }
 
-.correct {
-  color: green;
-  font-weight: bold; /* Para poner el texto en negrita */
+.main-page-container.dark .exercise-results-table td {
+  background-color: #333;
+  color: #e6f7ff;
 }
 
-.incorrect {
-  color: red;
-  font-weight: bold; /* Para poner el texto en negrita */
+
+.menu {
+  position: absolute;
+  top: 60px; 
+  left: 10px;
+  background-color: white; 
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+  z-index: 1000;
+  display: flex;
+  flex-direction: column; 
+  gap: 10px; 
+  padding: 15px; 
+  max-width: 220px; 
+  max-height: 400px; 
+  overflow-y: auto;
+}
+
+
+.menu.dark {
+  background-color: #2b2b2b;
+  color: var(--text-color-dark);
+}
+
+.menu::-webkit-scrollbar {
+  width: 8px;
+}
+
+
+.menu-item {
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #007bff, #00c6ff); 
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-item:hover {
+  background: linear-gradient(135deg, #0056b3, #004080); 
+  transform: translateY(-3px); 
+}
+
+
+.menu.dark .menu-item {
+  background: linear-gradient(135deg, #0056b3, #004080);
+}
+
+.menu.dark .menu-item:hover {
+  background: linear-gradient(135deg, #003f7f, #003366);
 }
